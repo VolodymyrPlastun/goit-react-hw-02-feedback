@@ -1,11 +1,3 @@
-.BtnList {
-  display: flex;
-}
-
-.BtnListItem:not(:last-child) {
-  margin-right: 15px;
-}
-
 .title {
   margin-bottom: 20px;
 }
