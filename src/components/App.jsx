@@ -12,23 +12,11 @@ state = {
   bad: 0
 }
   
-      goodBtn = () => {
-        this.setState(prevState => ({
-            good: prevState.good + 1,
-        }));
-    };
-
-        neutralBtn = () => {
-        this.setState(prevState => ({
-            neutral: prevState.neutral + 1,
-        }));
-    };
-
-          badBtn = () => {
-        this.setState(prevState => ({
-            bad: prevState.bad + 1,
-        }));
-          };
+leaveFeedback = (feedback) => {
+    this.setState(prevState => ({
+      [feedback]: prevState[feedback] + 1,
+    }));
+  };
   
   countTotalFeedback = () => {
     const totalFeedback = Object.values(this.state);
@@ -44,16 +32,13 @@ state = {
 
   
   render() {
-    const stateArr = Object.values(this.state);
-    console.log(stateArr);
   return (
     <div className={s.container}>
       <div>
         <Section title="Please leave feedback">
-     <FeedbackOptions
-          goodBtn={this.goodBtn}
-          neutralBtn={this.neutralBtn}
-          badBtn={this.badBtn}
+          <FeedbackOptions
+            options={["good", "neutral", "bad"]}
+            onLeaveFeedback={this.leaveFeedback}
         />
         </Section>
            <Section title="Statistics">

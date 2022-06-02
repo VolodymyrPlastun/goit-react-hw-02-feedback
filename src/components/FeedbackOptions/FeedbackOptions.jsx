@@ -1,11 +1,10 @@
 import s from '../FeedbackOptions/FeedbackOptions.module.css';
 
-const FeedbackOptions = ({ goodBtn, neutralBtn, badBtn }) => (
-<ul className={s.BtnList}>
-                <li className={s.BtnListItem}><button onClick={goodBtn} type="button">Good</button></li>
-                <li className={s.BtnListItem}><button onClick={neutralBtn} type="button">Neutral</button></li>
-                <li className={s.BtnListItem}><button onClick={badBtn} type="button">Bad</button></li>
-            </ul>
+const FeedbackOptions = ({ options, onLeaveFeedback }) => (
+   <div className={s.BtnList}>
+        {options.map(option => (
+<button key={option} className={s.BtnListItem}  onClick={() => onLeaveFeedback(option)} type="button">{option}</button>
+        ))}
+            </div>
 );
-
 export default FeedbackOptions;
