@@ -11,6 +11,7 @@ state = {
   neutral: 0,
   bad: 0
 }
+
   
 leaveFeedback = (feedback) => {
     this.setState(prevState => ({
@@ -32,20 +33,20 @@ leaveFeedback = (feedback) => {
 
   
   render() {
+    const btns = Object.keys(this.state);
+    const stats = Object.entries(this.state);
   return (
     <div className={s.container}>
       <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={["good", "neutral", "bad"]}
+            options={btns}
             onLeaveFeedback={this.leaveFeedback}
         />
         </Section>
            <Section title="Statistics">
-        {this.countTotalFeedback() > 0 ? <Statistics
-                    goodState={this.state.good}
-                    neutralState={this.state.neutral}
-                    badState={this.state.bad}
+          {this.countTotalFeedback() > 0 ? <Statistics
+            state={stats}
           total={this.countTotalFeedback()}
           posPersentage={this.countPositiveFeedbackPercentage()}/>
                 : <Notification message="There is no feedback"/>}
